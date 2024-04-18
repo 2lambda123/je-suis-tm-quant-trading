@@ -8,9 +8,10 @@ import numpy as np
 import os
 import pandas as pd
 import scipy.optimize
-import random as rd
 import matplotlib.pyplot as plt
 import cvxopt
+import secrets
+
 os.chdir('H:/')
 
 
@@ -212,7 +213,7 @@ def find_init(num=10):
     #try random cost
     for _ in range(num):
 
-        initial_guess=pd.Series([i*rd.random() for i in D[currentyear]['price']])
+        initial_guess=pd.Series([i*secrets.SystemRandom().random() for i in D[currentyear]['price']])
 
         ans=ls_estimate(initial_guess,diagnosis=False)
         

@@ -33,8 +33,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import fix_yahoo_finance as yf
-import random as rd
 from sklearn.model_selection import train_test_split
+import secrets
 
 
 # In[2]:
@@ -239,7 +239,7 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
          
             #we use standard normal distribution to generate pseudo random number
             #which is sufficient for our monte carlo simulation
-            sde=drift+returnn.std()*rd.gauss(0,1)
+            sde=drift+returnn.std()*secrets.SystemRandom().gauss(0,1)
             temp=d[counter][-1]*np.exp(sde)
         
             d[counter].append(temp.item())
